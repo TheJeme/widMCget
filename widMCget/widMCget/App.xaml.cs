@@ -11,7 +11,7 @@ namespace widMCget
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MainCarouselPage();
         }
 
         protected override void OnStart()

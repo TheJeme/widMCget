@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:widMCget"
+             x:Class="widMCget.MainCarouselPage">
+    
+    <ContentPage BackgroundColor="#808e9b">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Center" >
+                <Image Source="compass_00.png"
+               WidthRequest="340"
+               HeightRequest="340"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage BackgroundColor="#ffa801">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Center">
+                <Image x:Name="ClockImage" Source="clock_00.png"
+               WidthRequest="340"
+               HeightRequest="340"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage BackgroundColor="#f53b57">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Center">
+                <Image Source="bed.png"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnBedTapped"
+                            NumberOfTapsRequired="1" >
+                        </TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage BackgroundColor="#4bcffa">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Center">
+                <Image Source="fishing_rod.png"
+               WidthRequest="340"
+               HeightRequest="340"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage BackgroundColor="#ffdd59">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Center">
+                <Image Source="craftingtable.png"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage BackgroundColor="#EAB543">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Center">
+                <Image Source="chest.png"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage BackgroundColor="#7f7f7f">
+        <ContentPage.Content>
+
+            <StackLayout VerticalOptions="Center">
+                <Image Source="diamond_ore_3d.png"
+                       WidthRequest="340"
+                       HeightRequest="340"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+
+                <Image Source="stone_pickaxe.png"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage BackgroundColor="#f7d794">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Center">
+                <Label x:Name="CookieLabel"
+                       Text="0"
+                       FontSize="64"
+                       HorizontalOptions="Center"
+                       FontFamily="{StaticResource MinecraftRegular}"/>
+                <Image x:Name="CookieImage"
+                       Source="cookie.png"
+                       WidthRequest="340"
+                       HeightRequest="340"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnCookieTapped"
+                            NumberOfTapsRequired="1" >
+                        </TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage BackgroundColor="#574b90">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Center">
+                <Label x:Name="EggLabel"
+                       Text="1000000"
+                       FontSize="64"
+                       HorizontalOptions="Center"
+                       FontFamily="{StaticResource MinecraftRegular}"/>
+                <Image x:Name="EggImage"
+                   Source="egg.png"
+                   WidthRequest="340"
+                   HeightRequest="340"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnEggTapped"
+                            NumberOfTapsRequired="1" >
+                        </TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+</CarouselPage>
