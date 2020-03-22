@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:widMCget"
              x:Class="widMCget.MainCarouselPage">
-    
+
     <ContentPage BackgroundColor="#808e9b">
         <ContentPage.Content>
             <StackLayout VerticalOptions="Center" >
-                <Image Source="compass_00.png"
+                <Image x:Name="CompassImage"
+                       Source="compass_00.png"
                        WidthRequest="340"
                        HeightRequest="340"
                        VerticalOptions="Center"

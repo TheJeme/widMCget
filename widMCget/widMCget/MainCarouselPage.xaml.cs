@@ -8,6 +8,7 @@ namespace widMCget
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainCarouselPage : CarouselPage
     {
+        SensorSpeed speed = SensorSpeed.UI;
         DateTime dateTimeNow;
         int totalCookies;
         int totalEggs;
@@ -16,12 +17,12 @@ namespace widMCget
         public MainCarouselPage()
         {
             InitializeComponent();
-
             dateTimeNow = DateTime.Now;
             totalCookies = 0;
             totalEggs = 1000000;
             isFlashlight = false;
-
+            Compass.ReadingChanged += Compass_ReadingChanged;
+            ToggleCompass();
             SetClock();
 
         }
@@ -254,14 +255,11 @@ namespace widMCget
             EggLabel.Text = totalEggs.ToString();
         }
 
-
-        SensorSpeed speed = SensorSpeed.UI;
-
         void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
         {
             var data = e.Reading;
             Console.WriteLine($"Reading: {data.HeadingMagneticNorth} degrees");
-            // Process Heading Magnetic North
+            SetCompass(data.HeadingMagneticNorth);
         }
 
         public void ToggleCompass()
@@ -277,6 +275,58 @@ namespace widMCget
             {
                 Console.WriteLine("Error with compass");
             }
+        }
+
+        void SetCompass(double data)
+        {
+            if (data >= 352.5 || data <= 7.5)
+                CompassImage.Source = "compass_16";
+            else if (data >= 7.5 && data <= 22.5)
+                CompassImage.Source = "compass_15";
+            else if (data >= 22.5 && data <= 37.5)
+                CompassImage.Source = "compass_14";
+            else if (data >= 37.5 && data <= 52.5)
+                CompassImage.Source = "compass_13";
+            else if (data >= 52.5 && data <= 67.5)
+                CompassImage.Source = "compass_12";
+            else if (data >= 67.5 && data <= 82.5)
+                CompassImage.Source = "compass_10";
+            else if (data >= 82.5 && data <= 97.5)
+                CompassImage.Source = "compass_08";
+            else if (data >= 97.5 && data <= 112.5)
+                CompassImage.Source = "compass_06";
+            else if (data >= 112.5 && data <= 127.5)
+                CompassImage.Source = "compass_04";
+            else if (data >= 127.5 && data <= 142.5)
+                CompassImage.Source = "compass_03";
+            else if (data >= 142.5 && data <= 157.5)
+                CompassImage.Source = "compass_02";
+            else if (data >= 157.5 && data <= 172.5)
+                CompassImage.Source = "compass_01";
+            else if (data >= 172.5 && data <= 187.5)
+                CompassImage.Source = "compass_00";
+            else if (data >= 187.5 && data <= 202.5)
+                CompassImage.Source = "compass_31";
+            else if (data >= 202.5 && data <= 217.5)
+                CompassImage.Source = "compass_30";
+            else if (data >= 217.5 && data <= 232.5)
+                CompassImage.Source = "compass_29";
+            else if (data >= 232.5 && data <= 247.5)
+                CompassImage.Source = "compass_28";
+            else if (data >= 247.5 && data <= 262.5)
+                CompassImage.Source = "compass_26";
+            else if (data >= 262.5 && data <= 277.5)
+                CompassImage.Source = "compass_23";
+            else if (data >= 277.5 && data <= 292.5)
+                CompassImage.Source = "compass_22";
+            else if (data >= 292.5 && data <= 307.5)
+                CompassImage.Source = "compass_20";
+            else if (data >= 307.5 && data <= 322.5)
+                CompassImage.Source = "compass_19";
+            else if (data >= 322.5 && data <= 337.5)
+                CompassImage.Source = "compass_18";
+            else if (data >= 337.5 || data <= 352.5)
+                CompassImage.Source = "compass_17";
         }
     }
 }
