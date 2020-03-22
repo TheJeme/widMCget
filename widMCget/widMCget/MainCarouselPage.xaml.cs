@@ -17,6 +17,7 @@ namespace widMCget
         public MainCarouselPage()
         {
             InitializeComponent();
+
             dateTimeNow = DateTime.Now;
             totalCookies = 0;
             totalEggs = 1000000;
