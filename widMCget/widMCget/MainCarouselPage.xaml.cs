@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +11,7 @@ namespace widMCget
         DateTime dateTimeNow;
         int totalCookies;
         int totalEggs;
+        bool isFlashlight;
 
         public MainCarouselPage()
         {
@@ -23,6 +20,7 @@ namespace widMCget
             dateTimeNow = DateTime.Now;
             totalCookies = 0;
             totalEggs = 1000000;
+            isFlashlight = false;
 
             SetClock();
 
@@ -201,11 +199,42 @@ namespace widMCget
             }
         }
 
+        private async void OnTorchTapped(object sender, EventArgs e)
+        {
+            if (!isFlashlight)
+            {
+                TorchImage.Source = "torch_on";
+                isFlashlight = true;
+                try
+                {
+                    await Flashlight.TurnOnAsync();
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unable to enable flashlight");
+                }
+            }
+            else
+            {
+                TorchImage.Source = "torch_off";
+                isFlashlight = false;
+                try
+                {
+                    await Flashlight.TurnOffAsync();
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unable to disable flashlight");
+                }
+            }
+        }
+
         private void OnBedTapped(object sender, EventArgs e)
         {
             if (dateTimeNow.Hour >= 21 || (dateTimeNow.Hour >= 0 && dateTimeNow.Hour <= 6))
             {
                 Console.WriteLine("You can sleep");
+                BedPage.BackgroundColor = Color.FromHex("#63232d");
             }
             else
             {
@@ -223,6 +252,31 @@ namespace widMCget
         {
             totalEggs -= 1;
             EggLabel.Text = totalEggs.ToString();
+        }
+
+
+        SensorSpeed speed = SensorSpeed.UI;
+
+        void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
+        {
+            var data = e.Reading;
+            Console.WriteLine($"Reading: {data.HeadingMagneticNorth} degrees");
+            // Process Heading Magnetic North
+        }
+
+        public void ToggleCompass()
+        {
+            try
+            {
+                if (Compass.IsMonitoring)
+                    Compass.Stop();
+                else
+                    Compass.Start(speed);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error with compass");
+            }
         }
     }
 }
