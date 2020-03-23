@@ -22,10 +22,8 @@ namespace widMCget
         ISimpleAudioPlayer meow2;
         ISimpleAudioPlayer meow3;
         ISimpleAudioPlayer meow4;
+        ISimpleAudioPlayer meow5;
 
-        ISimpleAudioPlayer hitt1;
-        ISimpleAudioPlayer hitt2;
-        ISimpleAudioPlayer hitt3;
 
         ISimpleAudioPlayer[] meowArr;
 
@@ -38,17 +36,14 @@ namespace widMCget
             meow2 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
             meow3 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
             meow4 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-            hitt1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-            hitt2 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
-            hitt3 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            meow5 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
             meow1.Load(GetAudioFile("meow1.wav"));
             meow2.Load(GetAudioFile("meow2.wav"));
             meow3.Load(GetAudioFile("meow3.wav"));
-            hitt1.Load(GetAudioFile("hitt1.wav"));
-            hitt2.Load(GetAudioFile("hitt2.wav"));
-            hitt3.Load(GetAudioFile("hitt3.wav"));
+            meow4.Load(GetAudioFile("meow4.wav"));
+            meow5.Load(GetAudioFile("meow5.wav"));
 
-            meowArr = new ISimpleAudioPlayer[] { meow1, meow2, meow3, meow4, hitt1, hitt2, hitt3 };
+            meowArr = new ISimpleAudioPlayer[] { meow1, meow2, meow3, meow4, meow5 };
 
 
             dateTimeNow = DateTime.Now;

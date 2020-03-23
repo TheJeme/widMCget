@@ -10,23 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Audio\hitt1.wav" />
-    <None Remove="Audio\hitt2.wav" />
-    <None Remove="Audio\hitt3.wav" />
     <None Remove="Audio\meow1.wav" />
     <None Remove="Audio\meow2.wav" />
     <None Remove="Audio\meow3.wav" />
     <None Remove="Audio\meow4.wav" />
+    <None Remove="Audio\meow5.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Audio\hitt1.wav" />
-    <EmbeddedResource Include="Audio\hitt2.wav" />
-    <EmbeddedResource Include="Audio\hitt3.wav" />
     <EmbeddedResource Include="Audio\meow1.wav" />
     <EmbeddedResource Include="Audio\meow2.wav" />
     <EmbeddedResource Include="Audio\meow3.wav" />
     <EmbeddedResource Include="Audio\meow4.wav" />
+    <EmbeddedResource Include="Audio\meow5.wav" />
   </ItemGroup>
 
   <ItemGroup>
