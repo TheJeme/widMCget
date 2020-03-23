@@ -10,6 +10,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Audio\hitt1.wav" />
+    <None Remove="Audio\hitt2.wav" />
+    <None Remove="Audio\hitt3.wav" />
+    <None Remove="Audio\meow1.wav" />
+    <None Remove="Audio\meow2.wav" />
+    <None Remove="Audio\meow3.wav" />
+    <None Remove="Audio\meow4.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Audio\hitt1.wav" />
+    <EmbeddedResource Include="Audio\hitt2.wav" />
+    <EmbeddedResource Include="Audio\hitt3.wav" />
+    <EmbeddedResource Include="Audio\meow1.wav" />
+    <EmbeddedResource Include="Audio\meow2.wav" />
+    <EmbeddedResource Include="Audio\meow3.wav" />
+    <EmbeddedResource Include="Audio\meow4.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
   </ItemGroup>

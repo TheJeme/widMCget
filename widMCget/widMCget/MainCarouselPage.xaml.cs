@@ -2,6 +2,9 @@
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.SimpleAudioPlayer;
+using System.IO;
+using System.Reflection;
 
 namespace widMCget
 {
@@ -13,20 +16,58 @@ namespace widMCget
         int totalCookies;
         int totalEggs;
         bool isFlashlight;
+        bool isSleeping;
+
+        ISimpleAudioPlayer meow1;
+        ISimpleAudioPlayer meow2;
+        ISimpleAudioPlayer meow3;
+        ISimpleAudioPlayer meow4;
+
+        ISimpleAudioPlayer hitt1;
+        ISimpleAudioPlayer hitt2;
+        ISimpleAudioPlayer hitt3;
+
+        ISimpleAudioPlayer[] meowArr;
+
 
         public MainCarouselPage()
         {
             InitializeComponent();
+
+            meow1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            meow2 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            meow3 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            meow4 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            hitt1 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            hitt2 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            hitt3 = CrossSimpleAudioPlayer.CreateSimpleAudioPlayer();
+            meow1.Load(GetAudioFile("meow1.wav"));
+            meow2.Load(GetAudioFile("meow2.wav"));
+            meow3.Load(GetAudioFile("meow3.wav"));
+            hitt1.Load(GetAudioFile("hitt1.wav"));
+            hitt2.Load(GetAudioFile("hitt2.wav"));
+            hitt3.Load(GetAudioFile("hitt3.wav"));
+
+            meowArr = new ISimpleAudioPlayer[] { meow1, meow2, meow3, meow4, hitt1, hitt2, hitt3 };
 
 
             dateTimeNow = DateTime.Now;
             totalCookies = 0;
             totalEggs = 1000000;
             isFlashlight = false;
+            isSleeping = false;
             Compass.ReadingChanged += Compass_ReadingChanged;
             ToggleCompass();
             SetClock();
 
+        }
+
+        Stream GetAudioFile(string file)
+        {
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            var audioStream = assembly.GetManifestResourceStream($"widMCget.Audio.{file}");
+
+            return audioStream;
         }
 
         public void SetClock()
@@ -234,15 +275,37 @@ namespace widMCget
 
         private void OnBedTapped(object sender, EventArgs e)
         {
-            if (dateTimeNow.Hour >= 21 || (dateTimeNow.Hour >= 0 && dateTimeNow.Hour <= 6))
+            if (!isSleeping)
             {
-                Console.WriteLine("You can sleep");
-                BedPage.BackgroundColor = Color.FromHex("#63232d");
+                CompassPage.BackgroundColor = Color.FromHex("#3e474f");
+                ClockPage.BackgroundColor = Color.FromHex("#805400");
+                TorchPage.BackgroundColor = Color.FromHex("#ac8800");
+                BedPage.BackgroundColor = Color.FromHex("#90071c");
+                NotePage.BackgroundColor = Color.FromHex("#87610f");
+                CookiePage.BackgroundColor = Color.FromHex("#b7800d");
+                EggPage.BackgroundColor = Color.FromHex("#2b2548");
+
+                isSleeping = true;
             }
             else
             {
-                Console.WriteLine("You cant sleep");
+                CompassPage.BackgroundColor = Color.FromHex("#808e9b");
+                ClockPage.BackgroundColor = Color.FromHex("#ffa801");
+                TorchPage.BackgroundColor = Color.FromHex("#ffdd59");
+                BedPage.BackgroundColor = Color.FromHex("#f53b57");
+                NotePage.BackgroundColor = Color.FromHex("#EAB543");
+                CookiePage.BackgroundColor = Color.FromHex("#f7d794");
+                EggPage.BackgroundColor = Color.FromHex("#574b90");
+
+                isSleeping = false;
             }
+        }
+
+        private void OnNoteTapped(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            int i = rnd.Next(0, meowArr.Length);
+            meowArr[i].Play();
         }
 
         private void OnCookieTapped(object sender, EventArgs e)

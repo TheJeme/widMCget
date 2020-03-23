@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:widMCget"
              x:Class="widMCget.MainCarouselPage">
 
-    <ContentPage BackgroundColor="#808e9b">
+    <ContentPage x:Name="CompassPage" BackgroundColor="#808e9b">
         <ContentPage.Content>
             <StackLayout VerticalOptions="Center" >
                 <Image x:Name="CompassImage"
@@ -17,7 +17,7 @@
         </ContentPage.Content>
     </ContentPage>
 
-    <ContentPage BackgroundColor="#ffa801">
+    <ContentPage x:Name="ClockPage" BackgroundColor="#ffa801">
         <ContentPage.Content>
             <StackLayout VerticalOptions="Center">
                 <Image x:Name="ClockImage" Source="clock_00.png"
@@ -29,7 +29,7 @@
         </ContentPage.Content>
     </ContentPage>
 
-    <ContentPage BackgroundColor="#ffdd59">
+    <ContentPage x:Name="TorchPage" BackgroundColor="#ffdd59">
         <ContentPage.Content>
             <StackLayout VerticalOptions="Center">
                 <Image x:Name="TorchImage" Source="torch_off.png"
@@ -63,56 +63,24 @@
         </ContentPage.Content>
     </ContentPage>
 
-    <ContentPage BackgroundColor="#4bcffa">
+    <ContentPage x:Name="NotePage" BackgroundColor="#EAB543">
         <ContentPage.Content>
             <StackLayout VerticalOptions="Center">
-                <Image Source="fishing_rod.png"
-               WidthRequest="340"
-               HeightRequest="340"
+                <Image Source="note.png"
                VerticalOptions="Center"
-               HorizontalOptions="Center"/>
+               HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnNoteTapped"
+                            NumberOfTapsRequired="1" >
+                        </TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
             </StackLayout>
         </ContentPage.Content>
     </ContentPage>
 
-    <ContentPage BackgroundColor="#EAB543">
-        <ContentPage.Content>
-            <StackLayout VerticalOptions="Center">
-                <Image Source="chest.png"
-               VerticalOptions="Center"
-               HorizontalOptions="Center"/>
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
-
-    <ContentPage BackgroundColor="#5f27cd">
-        <ContentPage.Content>
-            <StackLayout VerticalOptions="Center">
-                <Image Source="enchant.png"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"/>
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
-
-    <ContentPage BackgroundColor="#7f7f7f">
-        <ContentPage.Content>
-
-            <StackLayout VerticalOptions="Center">
-                <Image Source="diamond_ore_3d.png"
-                       WidthRequest="340"
-                       HeightRequest="340"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
-
-                <Image Source="stone_pickaxe.png"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
-            </StackLayout>
-        </ContentPage.Content>
-    </ContentPage>
-
-    <ContentPage BackgroundColor="#f7d794">
+    <ContentPage x:Name="CookiePage" BackgroundColor="#f7d794">
         <ContentPage.Content>
             <StackLayout VerticalOptions="Center">
                 <Label x:Name="CookieLabel"
@@ -137,7 +105,7 @@
         </ContentPage.Content>
     </ContentPage>
 
-    <ContentPage BackgroundColor="#574b90">
+    <ContentPage x:Name="EggPage" BackgroundColor="#574b90">
         <ContentPage.Content>
             <StackLayout VerticalOptions="Center">
                 <Label x:Name="EggLabel"
