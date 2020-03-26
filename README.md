@@ -13,7 +13,7 @@
 
 ## Download
 
-Not done yet
+[Download](https://github.com/TheJeme/widMCget/releases/ "widMCget") the latest version.
 
 ## License
 
